@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/objects/GearPlatform.gd" type="Script" id=1]
+
+[node name="GearPlatform" type="StaticBody2D"]
+script = ExtResource( 1 )
+spin_speed = 0.5
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -25, -125, 25, -125, 25, -25, 125, -25, 125, 25, 25, 25, 25, 125, -25, 125, -25, 25, -125, 25, -125, -25, -25, -25 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -25, -125, 25, -125, 25, -25, 125, -25, 125, 25, 25, 25, 25, 125, -25, 125, -25, 25, -125, 25, -125, -25, -25, -25 )
+__meta__ = {
+"_editor_description_": ""
+}
