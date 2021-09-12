@@ -5,6 +5,11 @@ export(float) var brake_torque = 10
 export(float) var jump_force = 200
 export(float) var air_speed = 4
 
+const faces = [preload("res://assets/player/sprocketeyeup.png"),
+		preload("res://assets/player/sprocketeyedown.png"),
+		preload("res://assets/player/sprocketeyeleft.png"),
+		preload("res://assets/player/sprocketeyeright.png")]
+
 func _physics_process(delta):
 	if(Input.is_action_pressed("left")):
 		angular_velocity -= delta*torque
@@ -40,6 +45,15 @@ func _integrate_forces(state):
 
 func _process(_delta):
 	$Face.rotation = -rotation+linear_velocity.x*0.001
+	var dir = linear_velocity.normalized()
+	if((dir.dot(Vector2.UP)) > 0.25):
+		$Face.texture = faces[0]
+	elif((dir.dot(Vector2.DOWN)) > 0.25):
+		$Face.texture = faces[1]
+	elif((dir.dot(Vector2.LEFT)) > 0.25):
+		$Face.texture = faces[2]
+	elif((dir.dot(Vector2.RIGHT)) > 0.25):
+		$Face.texture = faces[3]
 
 var can_jump:bool = false
 func _on_GroundCooldown_timeout():

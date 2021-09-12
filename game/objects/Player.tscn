@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/sprocket.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/sprocketface.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/sprocketeyeleft.png" type="Texture" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 10.0
@@ -25,6 +25,7 @@ script = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
