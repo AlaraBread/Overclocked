@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_2.png-a38a6e5e3bf5dc43a527baffe1ccd012.stex"
+path="res://.import/sprocketeyedown.png-09f04244fc52aac486614d242dad434f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player_2.png"
-dest_files=[ "res://.import/player_2.png-a38a6e5e3bf5dc43a527baffe1ccd012.stex" ]
+source_file="res://assets/player/sprocketeyedown.png"
+dest_files=[ "res://.import/sprocketeyedown.png-09f04244fc52aac486614d242dad434f.stex" ]
 
 [params]
 

@@ -5,11 +5,6 @@ export(float) var brake_torque = 10
 export(float) var jump_force = 200
 export(float) var air_speed = 4
 
-func _draw():
-	pass
-	#draw_circle(Vector2(), 30, Color(0.589844, 0.589844, 0.589844))
-	#draw_line(Vector2(), Vector2(30, 0), Color(0.152344, 0.152344, 0.152344), 10)
-
 func _physics_process(delta):
 	if(Input.is_action_pressed("left")):
 		angular_velocity -= delta*torque
@@ -42,6 +37,9 @@ func _integrate_forces(state):
 		var col = jump_info[0]
 		if(col.is_in_group("physics")):
 			col.linear_velocity -= jump_info[1]*jump_force
+
+func _process(_delta):
+	$Face.rotation = -rotation+linear_velocity.x*0.001
 
 var can_jump:bool = false
 func _on_GroundCooldown_timeout():

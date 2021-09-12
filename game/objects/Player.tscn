@@ -1,24 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/objects/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/player/player_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/player_3.png" type="Texture" id=3]
-[ext_resource path="res://assets/player/player_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/player_4.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/sprocket.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/sprocketface.png" type="Texture" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 10.0
 rough = true
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "default",
-"speed": 10.0
-} ]
-
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 28.0
 
 [node name="Player" type="RigidBody2D" groups=[
@@ -37,11 +27,14 @@ script = ExtResource( 1 )
 current = true
 smoothing_enabled = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 2 )
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Face" type="Sprite" parent="."]
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="GroundCooldown" type="Timer" parent="."]
 wait_time = 0.25
