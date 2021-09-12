@@ -23,10 +23,11 @@ radius = 28.0
 
 [node name="Player" type="RigidBody2D" groups=[
 "physics",
+"player",
 ]]
 mass = 2.0
 physics_material_override = SubResource( 1 )
-continuous_cd = 1
+continuous_cd = 2
 contacts_reported = 5
 contact_monitor = true
 can_sleep = false
@@ -38,7 +39,14 @@ smoothing_enabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="GroundCooldown" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="GroundCooldown" to="." method="_on_GroundCooldown_timeout"]

@@ -7,13 +7,13 @@ script = ExtResource( 1 )
 spin_speed = 0.5
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -25, -125, 25, -125, 25, -25, 125, -25, 125, 25, 25, 25, 25, 125, -25, 125, -25, 25, -125, 25, -125, -25, -25, -25 )
+polygon = PoolVector2Array( -32, -176, 32, -176, 36, -36, 176, -32, 176, 32, 36, 36, 32, 176, -32, 176, -36, 36, -176, 32, -176, -32, -36, -36 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -25, -125, 25, -125, 25, -25, 125, -25, 125, 25, 25, 25, 25, 125, -25, 125, -25, 25, -125, 25, -125, -25, -25, -25 )
+polygon = PoolVector2Array( -32, -176, 32, -176, 36, -36, 176, -32, 176, 32, 36, 36, 32, 176, -32, 176, -36, 36, -176, 32, -176, -32, -36, -36 )
 __meta__ = {
 "_editor_description_": ""
 }
