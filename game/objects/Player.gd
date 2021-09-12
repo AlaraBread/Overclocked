@@ -18,12 +18,6 @@ func _physics_process(delta):
 	else:
 		angular_velocity -= angular_velocity*(brake_torque*delta)
 
-func _process(_delta):
-	print("processing: " + str(angular_velocity))
-	$AnimatedSprite.rotation = -rotation
-	$AnimatedSprite.speed_scale = abs(angular_velocity*.2)
-	$AnimatedSprite.flip_h = linear_velocity.x > 0
-
 #holds the object to be jumped off of and the normal of our collision
 var jump_info:Array = [null, Vector2()]
 
