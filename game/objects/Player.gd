@@ -48,7 +48,7 @@ var avg_speed = Vector2()
 func _process(_delta):
 	$Face.rotation = -rotation+linear_velocity.x*0.001
 	var dir = linear_velocity.normalized()
-	if(linear_velocity.length() < 20):
+	if(linear_velocity.length() < 50):
 		$Face.texture = faces[4]
 	elif((dir.dot(Vector2.UP)) > 0.25):
 		$Face.texture = faces[0]
