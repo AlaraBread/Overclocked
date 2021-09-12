@@ -8,7 +8,8 @@ export(float) var air_speed = 4
 const faces = [preload("res://assets/player/sprocketeyeup.png"),
 		preload("res://assets/player/sprocketeyedown.png"),
 		preload("res://assets/player/sprocketeyeleft.png"),
-		preload("res://assets/player/sprocketeyeright.png")]
+		preload("res://assets/player/sprocketeyeright.png"),
+		preload("res://assets/player/sprocketface.png")]
 
 func _physics_process(delta):
 	if(Input.is_action_pressed("left")):
@@ -43,10 +44,13 @@ func _integrate_forces(state):
 		if(col.is_in_group("physics")):
 			col.linear_velocity -= jump_info[1]*jump_force
 
+var avg_speed = Vector2()
 func _process(_delta):
 	$Face.rotation = -rotation+linear_velocity.x*0.001
 	var dir = linear_velocity.normalized()
-	if((dir.dot(Vector2.UP)) > 0.25):
+	if(linear_velocity.length() < 20):
+		$Face.texture = faces[4]
+	elif((dir.dot(Vector2.UP)) > 0.25):
 		$Face.texture = faces[0]
 	elif((dir.dot(Vector2.DOWN)) > 0.25):
 		$Face.texture = faces[1]
