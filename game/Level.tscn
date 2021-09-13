@@ -7,9 +7,9 @@
 [ext_resource path="res://assets/slant_bottom_right.png" type="Texture" id=5]
 [ext_resource path="res://assets/slant_top_left.png" type="Texture" id=6]
 [ext_resource path="res://assets/slant_bottom_left.png" type="Texture" id=7]
+[ext_resource path="res://assets/theme/SpecialElite-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://game/objects/ExitDoor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/theme/Theme.tres" type="Theme" id=12]
-[ext_resource path="res://assets/theme/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -135,7 +135,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 64, 32, 64, 32 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 70
-font_data = ExtResource( 13 )
+font_data = ExtResource( 8 )
 
 [node name="Level" type="Node2D"]
 pause_mode = 2
