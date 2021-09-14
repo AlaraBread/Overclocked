@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/objects/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/slant_top_left.png" type="Texture" id=6]
 [ext_resource path="res://assets/slant_bottom_left.png" type="Texture" id=7]
 [ext_resource path="res://assets/theme/SpecialElite-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/lava.png" type="Texture" id=9]
 [ext_resource path="res://game/objects/ExitDoor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/theme/Theme.tres" type="Theme" id=12]
 
@@ -132,6 +133,20 @@ points = PoolVector2Array( 64, 64, 0, 64, 64, 32, 64, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
+5/name = "lava.png 5"
+5/texture = ExtResource( 9 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
 
 [sub_resource type="DynamicFont" id=7]
 size = 70
@@ -150,12 +165,12 @@ pause_mode = 1
 [node name="Objects" type="Node2D" parent="."]
 pause_mode = 1
 
+[node name="MovingPlatforms" type="Node2D" parent="."]
+pause_mode = 1
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 pause_mode = 1
 position = Vector2( 312, 96 )
-
-[node name="MovingPlatforms" type="Node2D" parent="."]
-pause_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 6 )

@@ -13,10 +13,18 @@ func _ready():
 
 func _physics_process(delta:float):
 	position += dir*(speed*delta*time_scale)
-	if(speed > 0 and (position-end_pos).length_squared() < 10):
+	var end
+	var start
+	if(time_scale < 0):
+		start = end_pos
+		end = initial_pos
+	else:
+		start = initial_pos
+		end = end_pos
+	if(speed > 0 and (position-end).length_squared() < 10):
 		speed *= -1
 		constant_linear_velocity = dir*(speed*time_scale)
-	elif(speed < 0 and (position-initial_pos).length_squared() < 10):
+	elif(speed < 0 and (position-start).length_squared() < 10):
 		speed *= -1
 		constant_linear_velocity = dir*(speed*time_scale)
 
