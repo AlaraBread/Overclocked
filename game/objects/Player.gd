@@ -11,6 +11,10 @@ const faces = [preload("res://assets/player/sprocketeyeup.png"),
 		preload("res://assets/player/sprocketeyeright.png"),
 		preload("res://assets/player/sprocketface.png")]
 
+var start_pos:Vector2
+func _ready():
+	start_pos = position
+
 func _physics_process(delta):
 	if(Input.is_action_pressed("left")):
 		angular_velocity -= delta*torque
@@ -22,7 +26,17 @@ func _physics_process(delta):
 #holds the object to be jumped off of and the normal of our collision
 var jump_info:Array = [null, Vector2()]
 
+var should_reset:bool = false
+func reset():
+	should_reset = true
+
 func _integrate_forces(state):
+	if(should_reset):
+		should_reset = false
+		state.transform = state.transform.rotated(-state.transform.get_rotation())
+		state.transform.origin = start_pos
+		state.linear_velocity = Vector2()
+		state.angular_velocity = 0
 	if(state.get_contact_count() > 0):
 		var p_i = 0
 		for i in range(state.get_contact_count()):
