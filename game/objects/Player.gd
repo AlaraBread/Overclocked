@@ -58,8 +58,8 @@ func _integrate_forces(state):
 		if(col.is_in_group("physics")):
 			col.linear_velocity -= jump_info[1]*jump_force
 
-var avg_speed = Vector2()
 func _process(_delta):
+	#face animation
 	$Face.rotation = -rotation+linear_velocity.x*0.001
 	var dir = linear_velocity.normalized()
 	if(linear_velocity.length() < 50):

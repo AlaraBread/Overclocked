@@ -28,6 +28,14 @@ func _physics_process(delta:float):
 		speed *= -1
 		constant_linear_velocity = dir*(speed*time_scale)
 
+func _process(delta):
+	$AnimatedSprite.speed_scale = abs(time_scale)
+	if(time_scale > 0):
+		$AnimatedSprite.animation = "default"
+	else:
+		$AnimatedSprite.animation = "reverse"
+	$Gear.rotation -= delta*time_scale
+
 var time_scale:float = 1
 func time_scale_changed(t:float):
 	time_scale = t
