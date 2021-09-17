@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/all_tiles.png-87e133cce6ef49af9fe740c28141f26c.stex"
+path="res://.import/cliff1.png-b4022bd0a09d9565ba50d6c4c33f0bd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/all_tiles.png"
-dest_files=[ "res://.import/all_tiles.png-87e133cce6ef49af9fe740c28141f26c.stex" ]
+source_file="res://assets/main_menu/cliff1.png"
+dest_files=[ "res://.import/cliff1.png-b4022bd0a09d9565ba50d6c4c33f0bd5.stex" ]
 
 [params]
 

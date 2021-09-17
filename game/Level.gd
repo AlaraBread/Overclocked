@@ -12,6 +12,7 @@ func setup_time_button(b):
 	b.connect("reset_time", self, "reset_time")
 
 func _ready():
+	print($TileMap.get_cell(0, 0))
 	for c in $MovingPlatforms.get_children():
 		connect("time_scale_changed", c, "time_scale_changed")
 		for b in c.get_children():
@@ -22,8 +23,7 @@ func _ready():
 		setup_time_button(c)
 	for t in $TileMap.get_used_cells():
 		match $TileMap.get_cellv(t):
-			5: # if this cell is lava
-				$TileMap.set_cellv(t, -1) # delete the lava tile
+			26,25: # if this cell is lava
 				#add a lava entity there
 				var lava = preload("res://game/objects/Lava.tscn").instance()
 				lava.position = t*64+Vector2(32, 32)

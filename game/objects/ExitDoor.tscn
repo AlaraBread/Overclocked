@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/objects/ExitDoor.gd" type="Script" id=1]
+[ext_resource path="res://assets/door/back.png" type="Texture" id=2]
+[ext_resource path="res://assets/door/front.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -11,14 +13,17 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
-color = Color( 0.454902, 1, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Back" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Front" type="Sprite" parent="."]
+z_index = 2
+texture = ExtResource( 3 )
+
+[node name="EnterPos" type="Position2D" parent="."]
+position = Vector2( -32, 0 )
+
+[node name="DonePos" type="Position2D" parent="."]
+position = Vector2( 32, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_ExitDoor_body_entered"]

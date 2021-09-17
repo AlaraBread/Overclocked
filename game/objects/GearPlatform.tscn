@@ -1,19 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/objects/GearPlatform.gd" type="Script" id=1]
+[ext_resource path="res://assets/gear/front.png" type="Texture" id=2]
+[ext_resource path="res://assets/gear/back.png" type="Texture" id=3]
 
 [node name="GearPlatform" type="StaticBody2D"]
 script = ExtResource( 1 )
 spin_speed = 0.5
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -32, -224, 32, -224, 36, -36, 224, -32, 224, 32, 36, 36, 32, 224, -32, 224, -36, 36, -224, 32, -224, -32, -36, -36 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -32, -192, 32, -192, 36, -36, 192, -32, 192, 32, 36, 36, 32, 192, -32, 192, -36, 36, -192, 32, -192, -32, -36, -36 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -32, -224, 32, -224, 36, -36, 224, -32, 224, 32, 36, 36, 32, 224, -32, 224, -36, 36, -224, 32, -224, -32, -36, -36 )
-__meta__ = {
-"_editor_description_": ""
-}
+[node name="BG" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )

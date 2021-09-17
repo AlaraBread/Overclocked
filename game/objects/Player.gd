@@ -31,6 +31,8 @@ func reset():
 	should_reset = true
 
 func _integrate_forces(state):
+	if(not active):
+		return
 	if(should_reset):
 		should_reset = false
 		state.transform = state.transform.rotated(-state.transform.get_rotation())
@@ -76,3 +78,9 @@ func _process(_delta):
 var can_jump:bool = false
 func _on_GroundCooldown_timeout():
 	can_jump = false
+
+var active:bool = true
+func dummy_mode():
+	active = false
+	collision_layer = 0
+	collision_mask = 0
