@@ -23,10 +23,12 @@ func _ready():
 	for t in $TileMap.get_used_cells():
 		match $TileMap.get_cellv(t):
 			26,25: # if this cell is lava
-				#add a lava entity there
-				var lava = preload("res://game/objects/Lava.tscn").instance()
-				lava.position = t*64+Vector2(32, 32)
-				add_child(lava)
+				#only add the lava entity if this tile isnt the top layer
+				if($TileMap.get_cell_autotile_coord(t.x, t.y) != Vector2()):
+					#add a lava entity here
+					var lava = preload("res://game/objects/Lava.tscn").instance()
+					lava.position = t*64+Vector2(32, 32)
+					add_child(lava)
 			6: # this cell is the clockwise conveyor autotile
 				var offset = $TileMap.get_cell_autotile_coord(t.x, t.y).x
 				$TileMap.set_cellv(t, -1) # delete the tile
