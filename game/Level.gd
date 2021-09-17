@@ -12,7 +12,6 @@ func setup_time_button(b):
 	b.connect("reset_time", self, "reset_time")
 
 func _ready():
-	print($TileMap.get_cell(0, 0))
 	for c in $MovingPlatforms.get_children():
 		connect("time_scale_changed", c, "time_scale_changed")
 		for b in c.get_children():
