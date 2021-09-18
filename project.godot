@@ -14,6 +14,10 @@ config/name="Overclocked"
 run/main_scene="res://menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Timesaver="*res://singletons/Timesaver.gd"
+
 [debug]
 
 gdscript/warnings/return_value_discarded=false

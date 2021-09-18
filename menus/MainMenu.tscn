@@ -39,6 +39,7 @@ margin_left = -1169.0
 margin_top = -735.0
 margin_right = 2169.0
 margin_bottom = 1505.0
+mouse_filter = 2
 color = Color( 0, 0.25098, 0.341176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,7 +47,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/BG"]
 frames = SubResource( 1 )
-frame = 2
 playing = true
 centered = false
 
@@ -57,6 +57,21 @@ motion_scale = Vector2( 0.05, 0.05 )
 position = Vector2( -344, -208 )
 texture = ExtResource( 4 )
 centered = false
+
+[node name="Play" type="Button" parent="ParallaxBackground/Title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = 112.0
+margin_right = 109.0
+margin_bottom = 167.0
+theme = ExtResource( 3 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FG" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.5, 0.5 )
@@ -74,34 +89,10 @@ position = Vector2( -240, -112 )
 texture = ExtResource( 8 )
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play" type="Button" parent="CanvasLayer/UI"]
-anchor_left = 0.435
-anchor_top = 0.616667
-anchor_right = 0.555
-anchor_bottom = 0.745667
-margin_left = 0.439972
-margin_top = 0.119995
-margin_right = 0.0559692
-margin_bottom = 0.0799561
-text = "Play"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[connection signal="pressed" from="CanvasLayer/UI/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="ParallaxBackground/Title/Play" to="." method="_on_Play_pressed"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

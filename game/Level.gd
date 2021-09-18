@@ -12,6 +12,7 @@ func setup_time_button(b):
 	b.connect("reset_time", self, "reset_time")
 
 func _ready():
+	connect("time_scale_changed", $ParallaxBackground/Clock, "time_scale_changed")
 	for c in $MovingPlatforms.get_children():
 		connect("time_scale_changed", c, "time_scale_changed")
 		for b in c.get_children():
@@ -62,7 +63,7 @@ func reset_time():
 	set_time(default_time)
 
 func _on_ExitDoor_entered():
-	get_tree().paused = true
+	Engine.time_scale = 0.5
 	$CanvasLayer/End.visible = true
 
 var target_time:float = 0
@@ -84,5 +85,5 @@ func _process(delta):
 		set_process(false)
 
 func _on_NextLevel_pressed():
-	get_tree().paused = false
+	Engine.time_scale = 1
 	get_tree().change_scene("res://game/levels/Level"+str(level_number+1)+".tscn")
