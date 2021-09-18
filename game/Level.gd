@@ -12,6 +12,7 @@ func setup_time_button(b):
 	b.connect("reset_time", self, "reset_time")
 
 func _ready():
+	$Player.set_camera_limit($CamLowerLimit.position, $CamUpperLimit.position)
 	connect("time_scale_changed", $ParallaxBackground/Clock, "time_scale_changed")
 	for c in $MovingPlatforms.get_children():
 		connect("time_scale_changed", c, "time_scale_changed")
@@ -65,6 +66,7 @@ func reset_time():
 func _on_ExitDoor_entered():
 	Engine.time_scale = 0.5
 	$CanvasLayer/End.visible = true
+	$CanvasLayer/End/NextLevel.grab_focus()
 
 var target_time:float = 0
 var start_time:float = 0

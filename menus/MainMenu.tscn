@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/main_menu/bg/3.png" type="Texture" id=1]
 [ext_resource path="res://menus/MainMenu.gd" type="Script" id=2]
@@ -8,6 +8,17 @@
 [ext_resource path="res://assets/main_menu/bg/1.png" type="Texture" id=6]
 [ext_resource path="res://assets/main_menu/bg/2.png" type="Texture" id=7]
 [ext_resource path="res://assets/main_menu/cliff1.png" type="Texture" id=8]
+[ext_resource path="res://assets/hidden-tut.png" type="Texture" id=9]
+[ext_resource path="res://assets/time-dil.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui_buttons/startbutton/startbutton_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui_buttons/startbutton/startbutton.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui_buttons/startbutton/startbutton_focused.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui_buttons/settingsbutton/settings_pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui_buttons/settingsbutton/settings.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui_buttons/settingsbutton/settings_focused.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui_buttons/quit/focus.png" type="Texture" id=17]
+[ext_resource path="res://assets/ui_buttons/quit/normal.png" type="Texture" id=18]
+[ext_resource path="res://assets/ui_buttons/quit/pressed.png" type="Texture" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -47,6 +58,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/BG"]
 frames = SubResource( 1 )
+frame = 2
 playing = true
 centered = false
 
@@ -58,17 +70,63 @@ position = Vector2( -344, -208 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Play" type="Button" parent="ParallaxBackground/Title"]
+[node name="Card" type="Sprite" parent="ParallaxBackground/Title"]
+position = Vector2( -177.389, 109.736 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+
+[node name="Card2" type="Sprite" parent="ParallaxBackground/Title"]
+position = Vector2( -73.389, 109.736 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Play" type="TextureButton" parent="ParallaxBackground/Title"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -8.0
-margin_top = 112.0
-margin_right = 109.0
-margin_bottom = 167.0
+margin_left = -11.0
+margin_top = 60.0
+margin_right = 181.0
+margin_bottom = 125.0
+focus_neighbour_bottom = NodePath("../Settings")
 theme = ExtResource( 3 )
-text = "Play"
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+texture_focused = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="TextureButton" parent="ParallaxBackground/Title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = 126.0
+margin_right = 243.0
+margin_bottom = 191.0
+focus_neighbour_top = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../Quit")
+theme = ExtResource( 3 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 16 )
+texture_focused = ExtResource( 16 )
+
+[node name="Quit" type="TextureButton" parent="ParallaxBackground/Title"]
+margin_left = -13.0
+margin_top = 192.0
+margin_right = 147.0
+margin_bottom = 256.0
+focus_neighbour_top = NodePath("../Settings")
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 17 )
+texture_focused = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,4 +153,6 @@ one_shot = true
 autostart = true
 
 [connection signal="pressed" from="ParallaxBackground/Title/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="ParallaxBackground/Title/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="ParallaxBackground/Title/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

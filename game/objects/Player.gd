@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export(float) var zoom = 1.5
 export(float) var torque = 30
 export(float) var brake_torque = 10
 export(float) var jump_force = 200
@@ -13,7 +14,14 @@ const faces = [preload("res://assets/player/sprocketeyeup.png"),
 
 var start_pos:Vector2
 func _ready():
+	$Camera2D.zoom = Vector2(zoom, zoom)
 	start_pos = position
+
+func set_camera_limit(low:Vector2, high:Vector2):
+	$Camera2D.limit_left = low.x
+	$Camera2D.limit_top = low.y
+	$Camera2D.limit_right = high.x
+	$Camera2D.limit_bottom = high.y
 
 func _physics_process(delta):
 	if(Input.is_action_pressed("left")):
@@ -33,6 +41,12 @@ func reset():
 func _integrate_forces(state):
 	if(not active):
 		return
+	if(Input.is_action_just_pressed("jump") and can_jump and jump_info[0] != null):
+		can_jump = false
+		state.linear_velocity += jump_info[1]*jump_force
+		var col = jump_info[0]
+		if(col.is_in_group("physics")):
+			col.linear_velocity -= jump_info[1]*jump_force
 	if(should_reset):
 		should_reset = false
 		state.transform = state.transform.rotated(-state.transform.get_rotation())
@@ -53,12 +67,6 @@ func _integrate_forces(state):
 			state.linear_velocity.x -= air_speed
 		elif(Input.is_action_pressed("right")):
 			state.linear_velocity.x += air_speed
-	if(Input.is_action_just_pressed("jump") and can_jump and jump_info[0] != null):
-		can_jump = false
-		state.linear_velocity += jump_info[1]*jump_force
-		var col = jump_info[0]
-		if(col.is_in_group("physics")):
-			col.linear_velocity -= jump_info[1]*jump_force
 
 func _process(_delta):
 	#face animation

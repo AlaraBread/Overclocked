@@ -36,7 +36,7 @@ func _process(delta):
 		$AnimatedSprite.animation = "reverse"
 	$Gear.rotation -= delta*time_scale
 
-var time_scale:float = 1
+var time_scale:float = 0
 func time_scale_changed(t:float):
 	time_scale = t
 	constant_linear_velocity = dir*(speed*t)
