@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/objects/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://assets/ui_buttons/next/pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui_buttons/next/normal.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui_buttons/next/focus.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui_buttons/pause.png" type="Texture" id=7]
 [ext_resource path="res://assets/theme/SpecialElite-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://game/PauseMenu.gd" type="Script" id=9]
 [ext_resource path="res://game/objects/ExitDoor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/theme/Theme.tres" type="Theme" id=12]
 [ext_resource path="res://assets/clock/face.png" type="Texture" id=15]
@@ -31,6 +33,7 @@ position = Vector2( 100, 100 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Clock" type="ParallaxLayer" parent="ParallaxBackground"]
+pause_mode = 1
 z_index = 8
 motion_scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 19 )
@@ -89,6 +92,21 @@ position = Vector2( 312, 96 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
 
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+anchor_left = 0.921938
+anchor_top = 0.013
+anchor_right = 0.992
+anchor_bottom = 0.133667
+margin_left = -0.0640259
+margin_top = 0.2
+margin_right = 0.191956
+margin_bottom = -0.200001
+texture_normal = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="End" type="Control" parent="CanvasLayer"]
 visible = false
 anchor_right = 1.0
@@ -138,11 +156,68 @@ __meta__ = {
 }
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 12 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.498039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unpause" type="Button" parent="CanvasLayer/PauseMenu"]
+anchor_left = 0.312551
+anchor_top = 0.759833
+anchor_right = 0.687449
+anchor_bottom = 0.852833
+margin_left = -0.0520325
+margin_top = 0.0999756
+margin_right = 0.0519409
+margin_bottom = -0.700043
+text = "Unpause"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Reset" type="Button" parent="CanvasLayer/PauseMenu"]
+anchor_left = 0.312551
+anchor_top = 0.613167
+anchor_right = 0.687449
+anchor_bottom = 0.706167
+margin_left = -0.0520325
+margin_top = 0.0999756
+margin_right = 0.0519409
+margin_bottom = -0.700043
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/PauseMenu"]
+anchor_left = 0.312551
+anchor_top = 0.4665
+anchor_right = 0.687449
+anchor_bottom = 0.5595
+margin_left = -0.0520325
+margin_top = 0.0999756
+margin_right = 0.0519409
+margin_bottom = -0.700043
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [connection signal="entered" from="ExitDoor" to="." method="_on_ExitDoor_entered"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/End/NextLevel" to="." method="_on_NextLevel_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Unpause" to="CanvasLayer/PauseMenu" method="_on_Unpause_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Reset" to="CanvasLayer/PauseMenu" method="_on_Reset_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/MainMenu" to="CanvasLayer/PauseMenu" method="_on_MainMenu_pressed"]
