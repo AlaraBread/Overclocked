@@ -14,3 +14,6 @@ func music(id:int):
 
 func click():
 	$Click.play()
+
+func vol(v):
+	$MusicPlayer.volume_db = linear2db(v)

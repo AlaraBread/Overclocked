@@ -58,7 +58,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ParallaxBackground/BG"]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 centered = false
 
