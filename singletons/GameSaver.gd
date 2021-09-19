@@ -29,7 +29,8 @@ func _ready():
 
 var defaults = [
 	["music", 0.5],
-	["sfx", 0.5]
+	["sfx", 0.5],
+	["level", 1]
 ]
 func setup():
 	for i in defaults:
@@ -45,6 +46,7 @@ func save():
 
 func set(key, value):
 	data[key] = value
+	save()
 
 func get(key):
 	if(data.has(key)):
@@ -52,6 +54,7 @@ func get(key):
 	return null
 
 func reset():
+	data = {}
 	setup()
 
 func _exit_tree():

@@ -2,6 +2,7 @@ extends Node2D
 
 export(int) var level_number = 0
 export(float) var default_time = 0
+export(bool) var last_level = false
 
 signal time_scale_changed(t)
 
@@ -64,6 +65,8 @@ func reset_time():
 	set_time(default_time)
 
 func _on_ExitDoor_entered():
+	if(not last_level):
+		GameSaver.set("level", level_number+1)
 	Engine.time_scale = 0.5
 	$CanvasLayer/End.visible = true
 	$CanvasLayer/End/NextLevel.grab_focus()
@@ -89,4 +92,7 @@ func _process(delta):
 func _on_NextLevel_pressed():
 	Engine.time_scale = 1
 	MusicManager.click()
-	get_tree().change_scene("res://game/levels/Level"+str(level_number+1)+".tscn")
+	if(last_level):
+		get_tree().change_scene("res://menus/YouWin.tscn")
+	else:
+		get_tree().change_scene("res://game/levels/Level"+str(level_number+1)+".tscn")

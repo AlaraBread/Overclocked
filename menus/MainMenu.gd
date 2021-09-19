@@ -2,7 +2,7 @@ extends Node2D
 
 func _on_Play_pressed():
 	MusicManager.click()
-	get_tree().change_scene("res://game/levels/Level1.tscn")
+	get_tree().change_scene("res://game/levels/Level"+str(GameSaver.get("level"))+".tscn")
 
 func _on_Settings_pressed():
 	MusicManager.click()

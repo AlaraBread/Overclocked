@@ -94,4 +94,17 @@ save_name = "sfx"
 bus_name = "SFX"
 label_text = "SFX"
 
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.613375
+anchor_top = 0.787
+anchor_right = 0.984375
+anchor_bottom = 0.88
+margin_left = -0.0960083
+margin_top = 0.799988
+text = "Reset Progress"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

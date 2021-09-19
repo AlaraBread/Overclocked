@@ -91,7 +91,6 @@ func _on_GroundCooldown_timeout():
 var active:bool = true
 func dummy_mode():
 	active = false
-	mode = RigidBody2D.MODE_STATIC
 	gravity_scale = 0
 	linear_velocity = Vector2()
 	collision_layer = 0
