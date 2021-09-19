@@ -13,3 +13,5 @@ bus = "Music"
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "SFX"
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_MusicPlayer_finished"]
