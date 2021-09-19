@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/objects/Box.gd" type="Script" id=1]
 [ext_resource path="res://assets/box.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/burn.wav" type="AudioStream" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -22,3 +23,6 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="BurnPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

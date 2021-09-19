@@ -6,6 +6,7 @@ func _ready():
 
 var should_reset:bool = false
 func reset():#should put the object back where it was at the start
+	$BurnPlayer.play()
 	should_reset = true
 
 func _integrate_forces(state):

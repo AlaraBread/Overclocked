@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/objects/ExitDoor.gd" type="Script" id=1]
 [ext_resource path="res://assets/door/back.png" type="Texture" id=2]
 [ext_resource path="res://assets/door/front.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/doorEnter.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -27,4 +28,14 @@ position = Vector2( -32, 0 )
 [node name="DonePos" type="Position2D" parent="."]
 position = Vector2( 32, 0 )
 
+[node name="EnterPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 10.0
+bus = "SFX"
+
+[node name="SFXTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_ExitDoor_body_entered"]
+[connection signal="timeout" from="SFXTimer" to="." method="_on_SFXTimer_timeout"]

@@ -17,6 +17,7 @@ var initial_dist:float
 var speed = 0.1
 func _on_ExitDoor_body_entered(body):
 	if(body.is_in_group("player")):
+		$SFXTimer.start()
 		player = body
 		body.dummy_mode()
 		initial_dist = player.position.distance_to($EnterPos.global_position)
@@ -33,3 +34,7 @@ func _process(delta):
 			player.position = lerp(player.position, $DonePos.global_position, speed*64*delta)
 			if(player.position.distance_squared_to($DonePos.global_position) < 10):
 				emit_signal("entered")
+				set_process(false)
+
+func _on_SFXTimer_timeout():
+	$EnterPlayer.play()

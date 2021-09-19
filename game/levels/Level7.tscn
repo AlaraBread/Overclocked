@@ -23,7 +23,7 @@ position = Vector2( 288, 0 )
 time_scale = -1.0
 
 [node name="GearPlatform" parent="MovingPlatforms" index="0" instance=ExtResource( 2 )]
-position = Vector2( 512, 256 )
+position = Vector2( 512, 320 )
 spin_speed = -0.5
 
 [node name="GearPlatform2" parent="MovingPlatforms" index="1" instance=ExtResource( 2 )]

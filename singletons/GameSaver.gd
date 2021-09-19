@@ -28,6 +28,8 @@ func _ready():
 	emit_signal("setup")
 
 var defaults = [
+	["music", 0.5],
+	["sfx", 0.5]
 ]
 func setup():
 	for i in defaults:

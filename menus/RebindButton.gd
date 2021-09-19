@@ -53,3 +53,6 @@ func event_from_dict(d):
 		var e = InputEventMouseButton.new()
 		e.set_button_index(d["index"])
 		return e
+
+func _on_RebindButton_pressed():
+	MusicManager.click()

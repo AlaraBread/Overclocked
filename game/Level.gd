@@ -88,4 +88,5 @@ func _process(delta):
 
 func _on_NextLevel_pressed():
 	Engine.time_scale = 1
+	MusicManager.click()
 	get_tree().change_scene("res://game/levels/Level"+str(level_number+1)+".tscn")

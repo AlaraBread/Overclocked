@@ -19,4 +19,5 @@ grow_horizontal = 0
 align = 2
 valign = 1
 
+[connection signal="pressed" from="." to="." method="_on_RebindButton_pressed"]
 [connection signal="toggled" from="." to="." method="_on_RebindButton_toggled"]

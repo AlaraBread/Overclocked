@@ -1,13 +1,18 @@
 extends Node2D
 
 func _on_Play_pressed():
+	MusicManager.click()
 	get_tree().change_scene("res://game/levels/Level1.tscn")
 
 func _on_Settings_pressed():
+	MusicManager.click()
 	get_tree().change_scene("res://menus/Settings.tscn")
 
 var start_pos:Vector2
 func _ready():
+	if(OS.get_name() == "HTML5"):
+		$ParallaxBackground/Title/Quit.queue_free()
+	MusicManager.music(0)
 	start_pos = $Camera2D.position
 	var s = preload("res://menus/Settings.tscn").instance()
 	add_child(s)
@@ -33,4 +38,5 @@ func _process(delta):
 	moved = false
 
 func _on_Quit_pressed():
+	MusicManager.click()
 	get_tree().quit()

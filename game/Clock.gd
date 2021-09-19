@@ -2,7 +2,6 @@ extends ParallaxLayer
 
 func _ready():
 	_process(Timesaver.time, true)
-	print("fast forwarding: " + str(Timesaver.time))
 
 var time_scale:float = 1
 func time_scale_changed(t:float):

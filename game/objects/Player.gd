@@ -36,6 +36,7 @@ var jump_info:Array = [null, Vector2()]
 
 var should_reset:bool = false
 func reset():
+	$BurnPlayer.play()
 	should_reset = true
 
 func _integrate_forces(state):
@@ -90,5 +91,8 @@ func _on_GroundCooldown_timeout():
 var active:bool = true
 func dummy_mode():
 	active = false
+	mode = RigidBody2D.MODE_STATIC
+	gravity_scale = 0
+	linear_velocity = Vector2()
 	collision_layer = 0
 	collision_mask = 0

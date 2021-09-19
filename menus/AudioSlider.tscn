@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://menus/AudioSlider.gd" type="Script" id=2]
+
+[node name="AudioSlider" type="HSlider"]
+margin_right = 200.0
+margin_bottom = 31.0
+theme = ExtResource( 1 )
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = -53.0
+margin_right = -8.0
+margin_bottom = 31.0
+grow_horizontal = 0
+text = "     "
+align = 2
+
+[connection signal="value_changed" from="." to="." method="_on_AudioSlider_value_changed"]
